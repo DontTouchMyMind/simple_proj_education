@@ -5,5 +5,5 @@ from data import config
 
 
 bot = Bot(token=config.BOT_TOKEN)
-# storage = MemoryStorage()
-dp = Dispatcher(bot=bot)
+storage = MemoryStorage()
+dp = Dispatcher(bot=bot, storage=storage)
