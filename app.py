@@ -1,7 +1,9 @@
-from aiogram import executor, types
+from aiogram import executor
+
+import middlewares, filters, handlers   # Порядок импортов важен!
+from loader import dp
 
 from utils.notify_admins import on_startup_notify
-from handlers import dp
 
 
 async def on_startup(dispatcher):
