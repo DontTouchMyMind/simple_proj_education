@@ -11,6 +11,7 @@ from data.config import banned_users
 class BigBrother(BaseMiddleware):
     # on_point_event_type
     async def on_pre_process_update(self, update: types.Update, data: dict):
+        print('ppu')
         logging.info("[------------New update-------------]")
         logging.info("1.Pre Process Update")
         data['PPU'] = "It's some data was added in PreProcessUpdate"
