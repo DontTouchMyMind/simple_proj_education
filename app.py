@@ -12,5 +12,4 @@ async def on_startup(dispatcher):
 
 
 if __name__ == '__main__':
-    dp.middleware.setup(BigBrother())
     executor.start_polling(dp, on_startup=on_startup)
