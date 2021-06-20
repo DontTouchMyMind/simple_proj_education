@@ -2,7 +2,6 @@ from aiogram import executor
 
 import middlewares, filters, handlers   # Порядок импортов важен!
 from loader import dp
-from middlewares import BigBrother
 
 from utils.notify_admins import on_startup_notify
 
