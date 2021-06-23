@@ -65,3 +65,5 @@ class BigBrother(BaseMiddleware):
         #   'state': < aiogram.dispatcher.storage.FSMContext object at 0x7fc9b10d7790 >,
         #   'raw_state': None,
         #   'PM': "It's some data was added in ProcessMessage"}
+
+    # 6 Handlers
