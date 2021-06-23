@@ -42,7 +42,7 @@ class BigBrother(BaseMiddleware):
     async def on_pre_process_message(self, message: types.Message, data: dict):
         logging.info("3.Pre Process Message")
         logging.info(f"Input data = {data}")
-        logging.info("The next step is Filters -> ProcessMessage")
+        logging.info("The next step is Filters")
         data['PPM'] = "It's some data was added in PreProcessMessage"
 
     # 4 Filters
@@ -51,7 +51,7 @@ class BigBrother(BaseMiddleware):
     async def on_process_message(self, message: types.Message, data: dict):
         logging.info("5. Process Message")
         logging.info(f"Input data = {data}")
-        logging.info("The next step is Filters -> ProcessMessage")
+        logging.info("The next step is Handlers")
         data['PM'] = "It's some data was added in ProcessMessage"
         print(f"data from PM = {data}")
         new_data = {
@@ -67,3 +67,15 @@ class BigBrother(BaseMiddleware):
         #   'PM': "It's some data was added in ProcessMessage"}
 
     # 6 Handlers
+
+    # 7
+    async def on_post_process_message(self, message: types.Message, data_from_handler: list, data: dict):
+        # Здесь мы можем забрать данные из хендлера!
+        logging.info(f"7. Post Process Message {data=} {data_from_handler=}")
+        logging.info("The next step is Post Process Update")
+
+    # 8
+    async def on_post_process_update(self, update: types.Update, data_from_handler: list, data: dict):
+        logging.info(f"8. Post Process Update {data=} {data_from_handler=}")
+        logging.info("[------------Finish-------------]")
+

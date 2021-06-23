@@ -10,7 +10,7 @@ class SomeFilter(BoundFilter):
         # Take data from context
         data = ctx_data.get()
 
-        logging.info(f"#4. Filters, {data=}")
+        logging.info(f"4. Filters, {data=}")
         logging.info("The next step is Process Message")
 
         return {
