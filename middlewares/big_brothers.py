@@ -79,3 +79,6 @@ class BigBrother(BaseMiddleware):
         logging.info(f"8. Post Process Update {data=} {data_from_handler=}")
         logging.info("[------------Finish-------------]")
 
+    # Для того что бы убрать часики на инлайн кнопке
+    async def on_pre_process_callback_query(self, cq: types.CallbackQuery, data: dict):
+        await cq.answer()
