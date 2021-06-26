@@ -58,6 +58,7 @@ class BigBrother(BaseMiddleware):
             'PM': data.get('PM'),
             'PPM': data.get('PPM')
         }
+        # Здесь мы можем забирать объект Юзера и проверять его статус!
         data['middleware_data'] = new_data
         # Data from PM mb send to events handler
         # data from PM = {

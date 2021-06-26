@@ -6,12 +6,13 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from filters import SomeFilter
 from loader import dp, bot
+from utils.db_api.models import User
 from utils.misc.throttling import rate_limit
 
 
 @rate_limit(5, key='start')
 @dp.message_handler(CommandStart(), SomeFilter())
-async def bot_start(message: types.Message, middleware_data, filter_data):
+async def bot_start(message: types.Message, middleware_data, filter_data, user: User):
     await message.answer(f"Hello, {message.from_user.full_name}!\n{middleware_data=}\n{filter_data}",
                          reply_markup=InlineKeyboardMarkup(
                              inline_keyboard=[
