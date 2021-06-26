@@ -58,6 +58,7 @@ class BigBrother(BaseMiddleware):
             'PM': data.get('PM'),
             'PPM': data.get('PPM')
         }
+        # Здесь мы можем забирать объект Юзера и проверять его статус!
         data['middleware_data'] = new_data
         # Data from PM mb send to events handler
         # data from PM = {
@@ -79,3 +80,6 @@ class BigBrother(BaseMiddleware):
         logging.info(f"8. Post Process Update {data=} {data_from_handler=}")
         logging.info("[------------Finish-------------]")
 
+    # Для того что бы убрать часики на инлайн кнопке
+    async def on_pre_process_callback_query(self, cq: types.CallbackQuery, data: dict):
+        await cq.answer()
