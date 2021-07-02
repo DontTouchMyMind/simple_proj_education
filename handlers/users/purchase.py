@@ -5,7 +5,7 @@ from aiogram.dispatcher.filters import Command
 from aiogram.types import CallbackQuery
 
 from keybords.inline.callback_datas import buy_callback
-from keybords.inline.choice_buttons import choice
+from keybords.inline.choice_buttons import choice, pear_keyboard
 from loader import dp, bot
 
 
@@ -19,10 +19,13 @@ async def show_items(message: types.Message):
 
 
 # Отлавливаем нажатие кнопки Купи Грушу
-@dp.message_handler(buy_callback.filter(item_name='pear'))
+@dp.callback_query_handler(buy_callback.filter(item_name='pear'))
 async def buying_pear(call: CallbackQuery, callback_data: dict):    # callback_data - создается фильтром buy_callback.filter
     # await bot.answer_callback_query(callback_query_id=call.id)     # Закрываем часики!
     # Или так
-    await call.answer(cache_time=60)
+    # await call.answer(cache_time=60)
     logging.info(f"callback_data = {call.data}")
     logging.info(f"callback_data DICT = {callback_data}")
+    # quantity = callback_data.get('quantity')
+    await call.message.answer(f'You have chosen to buy a pear. Pears in total 1. Thx!',
+                              reply_markup=pear_keyboard)

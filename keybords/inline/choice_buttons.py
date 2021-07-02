@@ -24,3 +24,11 @@ choice = InlineKeyboardMarkup(
         ]
     ]
 )
+# Another way to create a keyboard
+pear_keyboard = InlineKeyboardMarkup()
+
+PEAR_LINK = 'https://www.google.com/search?q=pear'
+
+pear_link = InlineKeyboardButton(text='Buy here', link=PEAR_LINK)
+
+pear_keyboard.insert(pear_link)
