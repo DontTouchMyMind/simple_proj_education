@@ -26,6 +26,10 @@ from keybords.inline.callback_datas import buy_callback
 #     ]
 # )
 
+test = InlineKeyboardMarkup()
+cancel_button = InlineKeyboardButton(text='Testing cancel', callback_data='t_cancel')
+test.insert(cancel_button)
+
 # Вариант 2 - с помощью row_width и insert.
 choice = InlineKeyboardMarkup(row_width=2)
 

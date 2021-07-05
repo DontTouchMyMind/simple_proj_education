@@ -4,7 +4,7 @@ from aiogram import types
 from aiogram.dispatcher.filters import Command
 
 from keybords.inline.callback_datas import buy_callback
-from keybords.inline.choice_buttons import choice, pear_keyboard, apples_keyboard
+from keybords.inline.choice_buttons import choice, pear_keyboard, apples_keyboard, test
 from loader import dp, bot
 
 
@@ -15,6 +15,22 @@ async def show_items(message: types.Message):
              f"If you don't need anything click cancel.",
         reply_markup=choice
     )
+
+
+@dp.message_handler(Command('t'))
+async def testing_cancel(message: types.Message):
+    await message.answer(text=f"There are two\n", reply_markup=test)
+
+
+@dp.callback_query_handler(text='t_cancel')
+async def test_window(q: types.CallbackQuery):
+    await q.answer(
+        text="You have canceled this purchase!",
+        show_alert=True,
+        cache_time=60
+    )
+    # await bot.answer_callback_query(callback_query_id=q.id, text="Неверно, Верный ответ...", show_alert=True)
+
 
 
 # Отлавливаем нажатие кнопки Купи Грушу
@@ -40,7 +56,7 @@ async def buying_apple(call: types.CallbackQuery, callback_data: dict):
                               reply_markup=apples_keyboard)
 
 
-@dp.callback_query_handler(text="cancel")
+@dp.callback_query_handler(text_contains="cancel")
 async def cancel_buying(call: types.CallbackQuery):
     await call.answer("You have canceled this purchase!", show_alert=True)
 

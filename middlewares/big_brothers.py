@@ -81,5 +81,5 @@ class BigBrother(BaseMiddleware):
         logging.info("[------------Finish-------------]")
 
     # Для того что бы убрать часики на инлайн кнопке
-    async def on_pre_process_callback_query(self, cq: types.CallbackQuery, data: dict):
-        await cq.answer()
+    # async def on_pre_process_callback_query(self, cq: types.CallbackQuery, data: dict):
+    #     await cq.answer()
