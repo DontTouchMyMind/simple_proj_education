@@ -9,7 +9,7 @@ from loader import dp
 @dp.message_handler(Command('menu'))
 async def show_menu(message: types.Message):
     """The calling to keyboard 'Menu'."""
-    await message.answer('Check entity from the next menu', reply_markup=menu)
+    await message.answer("Check entity from the next menu", reply_markup=menu)
 
 
 @dp.message_handler(text='Meats')
